@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>P6 da Maria • Aula Animada</title>
+<style>
+:root{--ink:#263238;--paper:#fffdf7;--card:#fff;--purple:#7157d9;--gold:#ffd45a;--green:#73d6a3;--pink:#ff91ad}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:linear-gradient(160deg,#fff7dd,#f4efff);color:var(--ink)}
+.wrap{max-width:820px;margin:auto;padding:18px}.hero{background:#fff;border-radius:24px;padding:18px;box-shadow:0 10px 30px #0001}
+h1{margin:0;font-size:clamp(24px,5vw,38px)}.sub{color:#667;margin:6px 0 0}
+.screen{margin-top:16px;background:#fff;border-radius:24px;min-height:510px;padding:20px;box-shadow:0 10px 30px #0001;position:relative;overflow:hidden}
+.badge{display:inline-block;background:#eee9ff;color:#5540a8;padding:7px 11px;border-radius:999px;font-weight:800}
+.teacher{display:flex;gap:12px;align-items:flex-start;margin:18px 0}.face{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:#ffe7a3;font-size:34px;flex:none}
+.bubble{background:#f4f1ff;border-radius:18px;padding:14px 16px;font-size:1.15rem;line-height:1.45;flex:1}
+.visual{min-height:220px;display:grid;place-items:center}.bar{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;width:min(620px,100%)}
+.group{display:grid;grid-template-columns:repeat(2,1fr);gap:5px;padding:8px;border-radius:14px;background:#f1f2f6;transition:.5s transform,.5s background}
+.group.on{background:#ffe08a;transform:translateY(-8px)}.choc{height:42px;border-radius:7px;background:#8b5a3c;border:3px solid #70452e;box-shadow:inset 0 0 0 2px #a87555}
+.math{font-size:clamp(28px,7vw,54px);font-weight:900;text-align:center;animation:pop .45s ease}.hint{background:#fff2b8;border-radius:16px;padding:13px;font-weight:800;margin:12px 0}
+.controls{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}button{border:0;border-radius:14px;padding:13px 16px;font-weight:800;font-size:1rem;cursor:pointer;background:#eee}button.primary{background:var(--purple);color:white}button.gold{background:var(--gold)}button:disabled{opacity:.45}
+.answers{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;width:min(560px,100%)}.answers button{min-height:60px;background:#f0edff}.feedback{margin-top:12px;padding:12px;border-radius:14px;background:#e9fff2;font-weight:750}
+.progress{height:10px;background:#eee;border-radius:99px;margin-top:14px;overflow:hidden}.progress i{display:block;height:100%;background:var(--purple);transition:.4s;width:0}
+.small{font-size:.9rem;color:#667}.hidden{display:none}
+@keyframes pop{from{transform:scale(.6);opacity:0}to{transform:scale(1);opacity:1}}
+@media(max-width:600px){.screen{padding:14px;min-height:560px}.bubble{font-size:1.05rem}.bar{gap:4px}.group{gap:3px;padding:5px}.choc{height:34px}.answers{grid-template-columns:1fr}}
+</style>
+</head>
+<body><main class="wrap">
+<div class="hero"><h1>🌟 P6 da Maria</h1><p class="sub">Aula animada • Frações sem decorar</p><div class="progress"><i id="prog"></i></div></div>
+<section class="screen">
+<span class="badge" id="badge">🍫 Missão: descobrir 3/5 de 20</span>
+<div class="teacher"><div class="face">👩‍🏫</div><div class="bubble" id="talk"></div></div>
+<div class="visual" id="visual"></div>
+<div id="hint"></div><div id="feedback"></div>
+<div class="controls">
+<button id="back">← Voltar</button><button id="repeat">🔁 Repetir animação</button>
+<button id="voice">🎧 Professora: ouvir</button><button id="mute">🔇 Sem voz</button>
+<button class="primary" id="next">Começar ▶</button>
+</div><p class="small">A aula espera a Maria. Nada passa sozinho. 🎧 A voz usa a melhor opção em português disponível no aparelho.</p>
+</section></main>
+<script>
+const talk=document.getElementById('talk'), visual=document.getElementById('visual'), hint=document.getElementById('hint'), fb=document.getElementById('feedback'), prog=document.getElementById('prog'), next=document.getElementById('next');
+let step=0;
+function chocolates(active=0){
+ return `<div class="bar">${[0,1,2,3,4].map((g)=>`<div class="group ${g<active?'on':''}">${[0,1,2,3].map(()=>'<span class="choc"></span>').join('')}</div>`).join('')}</div>`
+}
+const scenes=[
+ {t:'Hoje não tem fórmula para decorar. Vamos descobrir o que 3/5 de 20 quer dizer usando chocolate. 🍫',v:'<div class="math">3/5 de 20 = ?</div>',n:'Vamos descobrir! →'},
+ {t:'Olhe primeiro para o número de baixo: 5. Ele pede que o total seja separado em 5 grupos iguais.',v:chocolates(0),h:'🧠 Ideia-chave: o número de BAIXO organiza o todo em grupos iguais.',n:'Separar os grupos →'},
+ {t:'Temos 20 quadradinhos e 5 grupos. Quantos quadradinhos ficam em cada grupo?',v:chocolates(0),q:true},
+ {t:'Isso! Cada grupo fica com 4. É por isso que fazemos 20 ÷ 5 = 4. Não é uma regra mágica, estamos repartindo igualmente.',v:chocolates(0)+'<div class="math">20 ÷ 5 = 4</div>',n:'E o número 3? →'},
+ {t:'Agora olhe para o número de cima: 3. Ele diz quantos desses grupos queremos pegar.',v:chocolates(3),h:'🧠 BAIXO separa. CIMA escolhe quantos grupos pegar.',n:'Ver o resultado →'},
+ {t:'Pegamos 3 grupos, e cada grupo tem 4. Então temos 4 + 4 + 4.',v:chocolates(3)+'<div class="math">4 + 4 + 4 = 12</div>',n:'Quero testar se entendi →'},
+ {t:'Agora a história mudou. Uma turma tem 35 alunos e 2/7 levaram lanche de casa. Quantos alunos são?',v:'<div class="math">2/7 de 35 = ?</div>',q2:true},
+ {t:'Muito bem! Você não repetiu a conta do chocolate. Usou a mesma ideia em uma situação nova. Isso é aprender. 🧠✨',v:'<div class="math">35 ÷ 7 = 5<br>5 × 2 = 10</div>',h:'⭐ 2/7 de 35 = 10 alunos.',n:'Finalizar ✓'},
+ {t:'Missão concluída! Agora tente explicar com suas palavras: por que dividimos pelo número de baixo?',v:'<textarea id="explain" style="width:min(600px,100%);height:120px;border:2px solid #ddd;border-radius:14px;padding:12px;font:inherit" placeholder="Eu dividiria por... porque..."></textarea>',h:'💡 Se você consegue explicar o porquê, o macete virou compreensão.',n:'Recomeçar ↻'}
+];
+function render(){
+ speechSynthesis.cancel(); const s=scenes[step]; talk.innerHTML=s.t; visual.innerHTML=s.v||'';hint.innerHTML=s.h?`<div class="hint">${s.h}</div>`:'';fb.innerHTML='';prog.style.width=((step+1)/scenes.length*100)+'%';
+ next.disabled=!!(s.q||s.q2); next.textContent=s.n||'Próximo →';
+ if(s.q) visual.innerHTML += `<div class="answers"><button onclick="ans1(2)">2</button><button onclick="ans1(4)">4</button><button onclick="ans1(5)">5</button><button onclick="ans1(10)">10</button></div>`;
+ if(s.q2) visual.innerHTML += `<div class="answers"><button onclick="ans2(5)">5</button><button onclick="ans2(7)">7</button><button onclick="ans2(10)">10</button><button onclick="ans2(14)">14</button></div>`;
+}
+window.ans1=n=>{if(n===4){fb.innerHTML='<div class="feedback">🌟 Exatamente! 20 dividido em 5 grupos dá 4 em cada grupo. Agora podemos continuar.</div>';next.disabled=false}else fb.innerHTML='<div class="feedback" style="background:#fff0f2">Vamos olhar a ideia, não a resposta: distribua 20 igualmente entre 5 grupos. Quantos ficam em cada um? Tente outra vez.</div>'}
+window.ans2=n=>{if(n===10){fb.innerHTML='<div class="feedback">🎉 Isso! 35 ÷ 7 = 5 em cada grupo. Como queremos 2 grupos: 5 + 5 = 10.</div>';next.disabled=false}else if(n===5)fb.innerHTML='<div class="feedback" style="background:#fff0f2">Você encontrou UM grupo: 35 ÷ 7 = 5. Mas o 2 de cima pede quantos grupos? Tente de novo.</div>';else fb.innerHTML='<div class="feedback" style="background:#fff0f2">Comece pelo 7: separe 35 em 7 grupos iguais. Depois veja quantos grupos o 2 pede.</div>'}
+next.onclick=()=>{if(step===scenes.length-1)step=0;else step++;render()}
+document.getElementById('back').onclick=()=>{if(step>0){step--;render()}}
+document.getElementById('repeat').onclick=render;
+
+let voiceEnabled=true, chosenVoice=null;
+function chooseVoice(){
+ const vs=speechSynthesis.getVoices().filter(v=>/^pt(-|_)?BR/i.test(v.lang)||/^pt/i.test(v.lang));
+ const preferred=['Luciana','Francisca','Maria','Fernanda','Google português do Brasil','Microsoft Francisca'];
+ chosenVoice=vs.find(v=>preferred.some(n=>v.name.toLowerCase().includes(n.toLowerCase()))) || vs.find(v=>v.localService) || vs[0] || null;
+}
+chooseVoice(); if('onvoiceschanged' in speechSynthesis) speechSynthesis.onvoiceschanged=chooseVoice;
+function speakTeacher(){
+ if(!voiceEnabled)return;
+ speechSynthesis.cancel(); chooseVoice();
+ let txt=talk.innerText.replace(/[🍫🧠✨🌟🎉]/g,'').trim();
+ let parts=txt.split(/(?<=[.!?])\s+/).filter(Boolean), i=0;
+ function sayNext(){
+   if(i>=parts.length)return;
+   let u=new SpeechSynthesisUtterance(parts[i++]);
+   u.lang='pt-BR'; u.rate=.82; u.pitch=1.03; if(chosenVoice)u.voice=chosenVoice;
+   u.onend=()=>setTimeout(sayNext,360);
+   speechSynthesis.speak(u);
+ }
+ sayNext();
+}
+document.getElementById('voice').onclick=speakTeacher;
+document.getElementById('mute').onclick=()=>{
+ voiceEnabled=!voiceEnabled; speechSynthesis.cancel();
+ document.getElementById('mute').textContent=voiceEnabled?'🔇 Sem voz':'🔊 Ativar voz';
+};
+render();
+</script></body></html>
