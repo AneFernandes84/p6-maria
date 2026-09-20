@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>P6 da Maria • Missão Prova</title>
+<style>
+:root{--bg:#fff8f2;--card:#fff;--ink:#253047;--muted:#667085;--a:#6c63ff;--b:#ffb84d;--ok:#2e9b69;--bad:#d9534f;--line:#e9e5df}
+*{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:linear-gradient(135deg,#fff8f2,#f4f5ff);color:var(--ink)}
+header{padding:22px 18px;background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+h1{margin:0;font-size:1.45rem} .sub{color:var(--muted);font-size:.92rem;margin-top:4px}
+main{max-width:980px;margin:auto;padding:18px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:0 5px 18px #0000000b}
+button{border:0;border-radius:12px;padding:12px 14px;font-size:1rem;font-weight:700;cursor:pointer;background:var(--a);color:#fff}
+button.alt{background:#f1efff;color:#4941b8} button.gold{background:var(--b);color:#4b3500} button.ghost{background:#f6f6f7;color:var(--ink)}
+.subject{min-height:145px;display:flex;flex-direction:column;justify-content:space-between}.subject h3{margin:0}.pill{display:inline-block;padding:5px 9px;border-radius:999px;background:#f3f1ff;color:#544cc7;font-size:.78rem;font-weight:800}
+.progress{height:9px;background:#eee;border-radius:99px;overflow:hidden}.bar{height:100%;background:var(--ok);width:0}.hidden{display:none!important}
+.toprow{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:14px}.lesson{margin:12px 0;padding:14px;border-left:5px solid var(--a);background:#faf9ff;border-radius:12px}
+.hack{padding:12px;background:#fff5d9;border-radius:12px;margin:10px 0}.example{padding:12px;background:#eefaf5;border-radius:12px;margin:10px 0}
+.q{font-size:1.08rem;font-weight:800;margin:12px 0}.opts{display:grid;gap:8px}.opt{background:#f7f7fa;color:var(--ink);text-align:left;border:1px solid #e6e6ea}.opt.correct{background:#e7f7ef;border-color:#6bc59a}.opt.wrong{background:#fdebea;border-color:#e18c88}
+.feedback{margin-top:10px;font-weight:700}.textarea{width:100%;min-height:110px;border:1px solid #d8d8df;border-radius:12px;padding:12px;font-size:1rem}
+.score{font-size:2rem;font-weight:900}.video{background:#20253a;color:white;border-radius:16px;padding:18px;margin:12px 0}.video .screen{min-height:130px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:1.25rem;padding:18px;background:#2d3451;border-radius:12px;margin-bottom:10px}
+.small{font-size:.88rem;color:var(--muted)} .video .small{color:#d9dcef}.tabs{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0}.tabs button{font-size:.88rem;padding:9px 11px}
+@media(max-width:520px){header{position:static}.grid{grid-template-columns:1fr}main{padding:12px}.card{border-radius:15px}}
+</style>
+</head>
+<body>
+<header><h1>📚 P6 da Maria • Missão Prova</h1><div class="sub">Explicações + vídeo-aulas narradas + macetes + exercícios + questões dissertativas + revisão dos erros</div></header>
+<main>
+<section id="home">
+<div class="card" style="margin-bottom:14px"><b>Como estudar:</b> abra uma matéria → assista à explicação → leia o macete → faça os exercícios. Errou? A questão entra na revisão. 🧠</div>
+
+<div id="staticSubjects" class="grid">
+  <div class="card subject"><div><span class="pill">📐 Matemática</span><h3>Módulos 24–27</h3><p>Frações, decimais, porcentagem, probabilidade, possibilidades, medidas, área e perímetro.</p></div><button class="staticBtn" data-sub="Matemática">Estudar Matemática</button></div>
+  <div class="card subject"><div><span class="pill">➗ Matemática Essencial</span><h3>Revisão essencial</h3><p>Unidades de medida, polígonos, perímetro e área.</p></div><button class="staticBtn" data-sub="Matemática Essencial">Estudar</button></div>
+  <div class="card subject"><div><span class="pill">🏛️ História</span><h3>Roma Antiga</h3><p>República, expansão, Império, crise e queda do Império Romano do Ocidente.</p></div><button class="staticBtn" data-sub="História">Estudar História</button></div>
+  <div class="card subject"><div><span class="pill">🧠 Ciências</span><h3>Sistema nervoso</h3><p>SNC e SNP, neurônios, impulsos, arco reflexo, sinapses e efeitos de drogas.</p></div><button class="staticBtn" data-sub="Ciências">Estudar Ciências</button></div>
+  <div class="card subject"><div><span class="pill">✍️ Português</span><h3>Leitura e linguagem</h3><p>Narrativas ficcionais, histórias em quadrinhos e linguagem jornalística.</p></div><button class="staticBtn" data-sub="Português">Estudar Português</button></div>
+  <div class="card subject"><div><span class="pill">🔤 Português Básico</span><h3>Interpretação</h3><p>Informação explícita, inferência e gramática em contexto.</p></div><button class="staticBtn" data-sub="Português Básico">Estudar</button></div>
+  <div class="card subject"><div><span class="pill">🌎 Geografia</span><h3>Vegetação e ambiente</h3><p>Paisagens vegetais, biodiversidade e desmatamento.</p></div><button class="staticBtn" data-sub="Geografia">Estudar Geografia</button></div>
+  <div class="card subject"><div><span class="pill">🇬🇧 Inglês</span><h3>Simple Past</h3><p>Frases afirmativas, negativas, perguntas e leitura em contexto.</p></div><button class="staticBtn" data-sub="Inglês">Estudar Inglês</button></div>
+  <div class="card subject"><div><span class="pill">🎨 Arte</span><h3>Linguagem visual</h3><p>Elementos visuais, descrição, interpretação, materiais e técnicas.</p></div><button class="staticBtn" data-sub="Arte">Estudar Arte</button></div>
+</div>
+<div id="subjects" class="grid hidden"></div>
+<div class="card" style="margin-top:14px"><h3>🎓 Simulado final</h3><p>Questões misturadas das matérias. Use depois das revisões.</p><button onclick="startMixed()">Começar simulado</button> <button class="gold" onclick="reviewErrors()">Revisar meus erros</button></div>
+</section>
+<section id="study" class="hidden"></section>
+<section id="quiz" class="hidden"></section>
+</main>
+<script>
+const DATA={
+"Matemática":{icon:"📐",lessons:[
+["Frações e números racionais","Fração também representa divisão. Fração própria é menor que 1; imprópria é maior que 1; aparente resulta em inteiro. Para calcular uma fração de uma quantidade, divida pelo denominador e multiplique pelo numerador.","BAIXO divide, CIMA multiplica.","3/5 de 40: 40 ÷ 5 = 8; 8 × 3 = 24."],
+["Decimal e porcentagem","Frações, decimais e porcentagens podem representar a mesma quantidade: 1/2 = 0,5 = 50%; 1/4 = 0,25 = 25%; 3/4 = 0,75 = 75%.","Porcentagem quer dizer 'de cada 100'.","0,75 = 75/100 = 3/4."],
+["Possibilidades e probabilidade","Use o princípio multiplicativo para contar escolhas sucessivas. Probabilidade é a razão entre casos favoráveis e total de casos possíveis.","Dois dados: 6 × 6 = 36 resultados ordenados.","3 camisetas e 2 shorts: 3 × 2 = 6 combinações."],
+["Medidas, área e perímetro","Comprimento muda por fator 10 a cada passo da escala métrica. Área muda por fator 100. Área mede a superfície; perímetro mede o contorno.","Comprimento pula de 10 em 10; ÁREA dá pulos de 100.","1 m = 100 cm; 1 m² = 10.000 cm²; 1 L = 1.000 mL; 1 kg = 1.000 g."]
+],qs:[
+["Quanto é 3/4 de 32?",["8","16","24","28"],2,"32 ÷ 4 = 8; 8 × 3 = 24."],
+["Qual é equivalente a 1/2?",["0,2 = 20%","0,25 = 25%","0,5 = 50%","0,75 = 75%"],2,"1 ÷ 2 = 0,5, que corresponde a 50%."],
+["Dois dados de 6 faces geram quantos pares ordenados?",["6","12","24","36"],3,"6 possibilidades × 6 possibilidades = 36."],
+["5 m correspondem a:",["50 cm","500 cm","5.000 cm","0,05 cm"],1,"1 m = 100 cm, então 5 m = 500 cm."],
+["4 m² correspondem a:",["400 cm²","4.000 cm²","40.000 cm²","400.000 cm²"],2,"m²→dm² ×100 e dm²→cm² ×100: 4 × 10.000 = 40.000 cm²."],
+["Retângulo 9 m × 5 m: qual é a área?",["14 m²","28 m²","45 m²","50 m²"],2,"Área = 9 × 5 = 45 m²."]
+],open:["Explique com suas palavras a diferença entre área e perímetro e dê um exemplo.","Explique por que a conversão de área usa fator 100 por etapa, enquanto comprimento usa fator 10."]},
+"Matemática Essencial":{icon:"➗",lessons:[
+["Unidades e polígonos","Revise unidades de comprimento e superfície. Polígono é uma figura plana fechada formada por segmentos de reta.","PERÍmetro percorre a borda.","Quadrado de lado 6 cm: perímetro = 24 cm e área = 36 cm²."]
+],qs:[
+["Um quadrado de lado 7 cm tem perímetro de:",["14 cm","21 cm","28 cm","49 cm"],2,"4 × 7 = 28 cm."],
+["Um retângulo de 8 cm por 3 cm tem área de:",["11 cm²","22 cm²","24 cm²","48 cm²"],2,"8 × 3 = 24 cm²."]
+],open:["Desenhe dois retângulos com a mesma área e perímetros diferentes. Mostre os cálculos."]},
+"História":{icon:"🏛️",lessons:[
+["Roma: origens e República","Roma passou por monarquia, república e império. Na República, instituições como Senado e magistraturas tinham papel político, e conflitos sociais envolveram patrícios e plebeus.","República lembra 'coisa pública': res publica.","As conquistas romanas ampliaram territórios, riquezas e também tensões sociais."],
+["Expansão e Império","A expansão militar aumentou o domínio romano pelo Mediterrâneo. O Império concentrou poder no imperador e manteve uma vasta rede de cidades, estradas e comércio.","Mediterrâneo virou o grande eixo de circulação romana.","A expansão trouxe riqueza e escravizados, mas também desigualdades e disputas."],
+["Crise e queda no Ocidente","O Império Romano do Ocidente enfrentou crises políticas, econômicas, militares e pressões de povos germânicos. A queda não teve uma única causa.","Não procure 'uma causa mágica': pense em várias crises juntas.","Em 476, a deposição de Rômulo Augústulo é tradicionalmente usada como marco do fim do Império Romano do Ocidente."]
+],qs:[
+["Qual sequência apresenta fases políticas de Roma?",["Império, República, Monarquia","Monarquia, República, Império","República, Monarquia, Império","Monarquia, Império, República"],1,"A sequência tradicional é Monarquia, República e Império."],
+["Na República Romana, qual grupo era formado por famílias aristocráticas tradicionais?",["Plebeus","Patrícios","Gladiadores","Mercadores fenícios"],1,"Os patrícios pertenciam às famílias aristocráticas tradicionais de Roma."],
+["A crise do Império Romano do Ocidente pode ser explicada melhor como:",["resultado de uma única batalha","conjunto de fatores políticos, econômicos e militares","efeito exclusivo do clima","fim voluntário do governo romano"],1,"A crise envolveu múltiplos fatores, não uma causa isolada."]
+],open:["Explique duas consequências da expansão territorial romana.","Por que não é adequado explicar a queda do Império Romano do Ocidente por uma única causa?"]},
+"Ciências":{icon:"🧠",lessons:[
+["Sistema nervoso","O sistema nervoso central inclui encéfalo e medula espinal. O periférico inclui nervos e gânglios. Cérebro, cerebelo, hipotálamo e tronco encefálico têm funções diferentes.","AFERENTE Aproxima do SNC; EFERENTE Escapa do SNC.","Um estímulo sensorial segue por via aferente até o SNC; a resposta motora sai por via eferente."],
+["Reflexo","No arco reflexo, a medula pode organizar uma resposta rápida antes da percepção consciente completa no cérebro.","Reflexo é atalho de proteção, não ausência de cérebro.","Ao tocar algo muito quente, a retirada da mão pode começar antes da percepção consciente da dor."],
+["Neurônios, sinapses e drogas","Neurônios transmitem informações por impulsos e comunicam-se em sinapses. Substâncias como o álcool alteram o funcionamento do sistema nervoso.","Sinapse = ponto de comunicação.","Alterar o sistema nervoso pode prejudicar reação, coordenação e julgamento."]
+],qs:[
+["O sistema nervoso central é formado principalmente por:",["nervos e músculos","encéfalo e medula espinal","coração e encéfalo","gânglios e ossos"],1,"O SNC é composto pelo encéfalo e pela medula espinal."],
+["Um nervo aferente conduz informação principalmente:",["do SNC aos músculos","dos receptores ao SNC","do coração aos pulmões","dos músculos aos ossos"],1,"A via aferente leva informação sensorial em direção ao SNC."],
+["No arco reflexo, uma resposta rápida pode ser organizada inicialmente pela:",["pele","medula espinal","articulação","corrente sanguínea"],1,"A medula espinal pode integrar rapidamente o arco reflexo."],
+["Qual estrutura participa especialmente de equilíbrio e coordenação dos movimentos?",["Cerebelo","Estômago","Pâncreas","Rim"],0,"O cerebelo participa do equilíbrio e da coordenação motora."]
+],open:["Descreva o caminho de um estímulo até a resposta usando receptor, nervo aferente, SNC, nervo eferente e órgão efetor.","Explique por que retiramos a mão de um objeto muito quente antes mesmo de pensar conscientemente na dor."]},
+"Português":{icon:"✍️",lessons:[
+["Narrativas ficcionais","Narrativas costumam apresentar narrador, personagens, tempo, espaço e enredo. O conflito movimenta os acontecimentos.","Quem conta = narrador; quem vive = personagem.","Ao interpretar, procure pistas no texto antes de escolher uma resposta."],
+["História em quadrinhos","HQ combina linguagem verbal e não verbal. Balões, expressões faciais, enquadramentos e onomatopeias ajudam a construir sentido.","Leia palavras + imagens.","'CRASH!' e 'TOC TOC' são exemplos de onomatopeias."],
+["Linguagem jornalística","Textos jornalísticos procuram informar acontecimentos. Título, subtítulo, lide e corpo organizam as informações.","Lide responde o essencial logo no começo.","Pergunte: o quê, quem, quando, onde, como e por quê."]
+],qs:[
+["Em uma narrativa, quem conta a história é o:",["personagem principal","narrador","leitor","autor dentro de toda história"],1,"Narrador é a voz que conta os acontecimentos da narrativa."],
+["Em HQs, 'BUM!' e 'TOC TOC' são exemplos de:",["adjetivos","onomatopeias","pronomes","artigos"],1,"Onomatopeias representam sons por meio de palavras ou letras."],
+["Em uma notícia, o lide costuma apresentar:",["apenas opinião pessoal","informações essenciais do acontecimento","somente o nome do jornal","uma lista de personagens fictícios"],1,"O lide sintetiza as informações essenciais da notícia."]
+],open:["Explique como uma imagem pode mudar ou completar o sentido de uma fala em uma história em quadrinhos.","Crie um pequeno lide respondendo: o quê, quem, quando e onde."]},
+"Português Básico":{icon:"🔤",lessons:[
+["Leitura e gramática em contexto","Observe a função das palavras dentro da frase e use pistas do contexto. Na interpretação, diferencie informação explícita de inferência.","Explícito está escrito; inferência é conclusão apoiada em pistas.","Antes de responder, volte à frase que sustenta sua conclusão."]
+],qs:[
+["Uma informação explícita em um texto é aquela que:",["está declarada no texto","depende apenas da opinião do leitor","não possui relação com o texto","sempre está escondida em uma imagem"],0,"Informação explícita aparece declarada no próprio texto."],
+["Uma inferência adequada deve:",["ignorar o texto","ser apoiada por pistas do texto","ser sempre uma opinião pessoal","contradizer as informações dadas"],1,"Inferência é uma conclusão construída a partir de pistas presentes no texto."]
+],open:["Explique a diferença entre informação explícita e inferência e crie um exemplo de cada."]},
+"Geografia":{icon:"🌎",lessons:[
+["Paisagens vegetais e biodiversidade","A vegetação varia conforme clima, solo, relevo e disponibilidade de água. Biodiversidade é a variedade de formas de vida em uma região ou no planeta.","Bio = vida; diversidade = variedade.","Florestas tropicais quentes e úmidas costumam apresentar grande biodiversidade."],
+["Desmatamento","Desmatamento é a retirada da cobertura vegetal e pode causar perda de habitats, erosão, alterações no ciclo da água e redução da biodiversidade.","Sem cobertura, o solo fica mais exposto.","As causas e consequências devem ser analisadas separadamente."]
+],qs:[
+["Biodiversidade significa:",["quantidade de chuva apenas","variedade de formas de vida","altura das montanhas","quantidade de cidades"],1,"Biodiversidade é a variedade de seres vivos e de formas de vida."],
+["Uma consequência possível do desmatamento é:",["aumento automático de habitats","perda de habitats e biodiversidade","formação imediata de novas florestas","eliminação da erosão"],1,"A retirada da vegetação pode destruir habitats e reduzir a biodiversidade."],
+["Qual conjunto ajuda a explicar diferenças entre formações vegetais?",["clima, solo, relevo e água","alfabeto, moedas e relógios","idioma, calendário e trânsito","somente latitude, sem outros fatores"],0,"Clima, solo, relevo e disponibilidade de água influenciam a vegetação."]
+],open:["Explique duas consequências ambientais do desmatamento.","Explique por que regiões com climas diferentes podem apresentar vegetações diferentes."]},
+"Inglês":{icon:"🇬🇧",lessons:[
+["Simple Past","O Simple Past fala de ações concluídas no passado. Verbos regulares geralmente recebem -ed; verbos irregulares mudam de forma. Com did/didn't, o verbo principal volta à forma base.","DID apareceu? O verbo principal volta ao normal.","She visited her grandma. / Did she visit her grandma? / She didn't visit her grandma."],
+["Leitura","Use palavras conhecidas, cognatos e contexto para compreender a ideia geral antes de traduzir palavra por palavra.","Primeiro sentido geral, depois detalhes.","Yesterday, last week e ago costumam sinalizar passado."]
+],qs:[
+["Qual frase está corretamente no Simple Past afirmativo?",["She visit her aunt yesterday.","She visited her aunt yesterday.","She did visited her aunt yesterday.","She visits her aunt yesterday."],1,"O verbo regular visit recebe -ed no passado afirmativo: visited."],
+["Qual pergunta está correta?",["Did you played soccer?","Did you play soccer?","Do you played soccer?","Were you play soccer?"],1,"Com did, o verbo principal fica na forma base: play."],
+["Qual negativa está correta?",["He didn't watched TV.","He didn't watch TV.","He not watched TV.","He doesn't watched TV."],1,"Depois de didn't, usa-se a forma base: watch."]
+],open:["Escreva três frases sobre ontem usando Simple Past: uma afirmativa, uma negativa e uma pergunta."]},
+"Arte":{icon:"🎨",lessons:[
+["Leitura de imagens e linguagem artística","Uma obra pode ser analisada por elementos visuais, materiais, técnicas, tema e contexto. Descrever o que vemos é diferente de interpretar o significado.","Primeiro DESCREVA, depois INTERPRETE.","Cor, linha, forma, textura e composição ajudam a construir a linguagem visual."]
+],qs:[
+["Ao analisar uma obra visual, qual é um elemento da linguagem visual?",["Cor","Verbo","Equação","Denominador"],0,"Cor é um dos elementos usados na construção da linguagem visual."],
+["Qual atitude diferencia descrição de interpretação?",["Descrição observa o que aparece; interpretação propõe sentidos","Descrição inventa sentidos; interpretação apenas lista cores","As duas são sempre idênticas","Interpretação ignora a obra"],0,"Descrição registra aspectos observáveis; interpretação constrói sentidos apoiados neles."]
+],open:["Escolha uma imagem ou obra estudada e separe sua resposta em duas partes: descrição do que vê e interpretação do que ela pode comunicar."]}
+};
+
+let current=null, pool=[], qi=0, score=0, errors=JSON.parse(localStorage.getItem("p6errors")||"[]"), prog=JSON.parse(localStorage.getItem("p6prog")||"{}");
+const S=id=>document.getElementById(id);
+function show(id){["home","study","quiz"].forEach(x=>S(x).classList.toggle("hidden",x!==id))}
+function renderHome(){
+ const box=S("subjects"); if(!box)return; box.innerHTML="";
+ Object.entries(DATA).forEach(([name,d])=>{
+  let p=prog[name]||0;
+  box.innerHTML+=`<div class="card subject"><div><span class="pill">${d.icon} ${name}</span><h3>${p>=80?"Dominado 🌟":p>0?"Em progresso":"Começar"}</h3><div class="progress"><div class="bar" style="width:${p}%"></div></div><div class="small">${p}% concluído</div></div><button onclick='openSubject(${JSON.stringify(name)})'>Estudar</button></div>`;
+ })
+}
+function openSubject(name){
+ current=name; let d=DATA[name]; show("study");
+ let lessons=d.lessons.map((l,i)=>`<div class="lesson"><h3>${i+1}. ${l[0]}</h3><p>${l[1]}</p><div class="hack">🧠 <b>Macete:</b> ${l[2]}</div><div class="example">✏️ <b>Exemplo:</b> ${l[3]}</div></div>`).join("");
+ S("study").innerHTML=`<div class="toprow"><button class="ghost" onclick="show('home')">← Matérias</button><span class="pill">${d.icon} ${name}</span></div>
+ <div class="card"><h2>Explicação</h2><div class="video"><div class="screen" id="screen">🎬 ${d.lessons[0][0]}<br><span class="small">Toque em “Assistir / ouvir” para a aula narrada.</span></div><button onclick="playLesson()">▶ Assistir / ouvir</button> <button class="ghost" onclick="speechSynthesis.cancel()">⏹ Parar</button></div>${lessons}
+ <div class="tabs"><button onclick="startQuiz()">🧩 Quiz</button><button class="gold" onclick="openQuestions()">✍️ Dissertativas</button></div></div>`;
+}
+function playLesson(){
+ let d=DATA[current], text=d.lessons.map(x=>x[0]+". "+x[1]+" Macete: "+x[2]+" Exemplo: "+x[3]).join(" ");
+ let screen=S("screen"); let i=0; const parts=d.lessons.map(x=>x[0]+" — "+x[1]);
+ speechSynthesis.cancel(); let u=new SpeechSynthesisUtterance(text);u.lang="pt-BR";u.rate=.92;speechSynthesis.speak(u);
+ screen.textContent=parts[0]; let timer=setInterval(()=>{i++; if(i>=parts.length){clearInterval(timer);return}screen.textContent=parts[i]},Math.max(3500,Math.round(text.length*55/parts.length)));
+}
+function startQuiz(custom){
+ pool=(custom||DATA[current].qs).map((q,i)=>({q,sub:current,id:i}));qi=0;score=0;show("quiz");renderQ();
+}
+function renderQ(){
+ if(qi>=pool.length)return finish();
+ let item=pool[qi],q=item.q;
+ S("quiz").innerHTML=`<div class="toprow"><button class="ghost" onclick="show('home')">← Sair</button><span class="pill">Questão ${qi+1}/${pool.length}</span></div><div class="card"><div class="q">${q[0]}</div><div class="opts">${q[1].map((o,i)=>`<button class="opt" data-i="${i}">${String.fromCharCode(65+i)}) ${o}</button>`).join("")}</div><div id="fb" class="feedback"></div></div>`;
+ document.querySelectorAll(".opt").forEach(b=>b.addEventListener("click",()=>answer(+b.dataset.i)));
+}
+function answer(i){
+ let item=pool[qi],q=item.q,buttons=[...document.querySelectorAll(".opt")];buttons.forEach(b=>b.disabled=true);
+ buttons[q[2]].classList.add("correct");
+ if(i===q[2]){score++;S("fb").innerHTML="✅ "+q[3]}else{buttons[i].classList.add("wrong");S("fb").innerHTML="💡 "+q[3];errors.push({sub:item.sub,q:q});localStorage.setItem("p6errors",JSON.stringify(errors.slice(-60)))}
+ setTimeout(()=>{qi++;renderQ()},1500)
+}
+function finish(){
+ let pct=Math.round(score/pool.length*100); if(current){prog[current]=Math.max(prog[current]||0,pct);localStorage.setItem("p6prog",JSON.stringify(prog))}
+ S("quiz").innerHTML=`<div class="card"><div class="score">${score}/${pool.length}</div><h2>${pct>=80?"Mandou muito bem! 🌟":"Boa! Agora vamos fortalecer os pontos fracos. 💪"}</h2><p>Acerto: ${pct}%</p><button onclick="show('home');renderHome()">Voltar às matérias</button> <button class="gold" onclick="reviewErrors()">Revisar erros</button></div>`;renderHome()
+}
+function openQuestions(){
+ let d=DATA[current];
+ S("study").innerHTML=`<div class="toprow"><button class="ghost" onclick="openSubject(current)">← Voltar</button><span class="pill">✍️ ${current}</span></div><div class="card"><h2>Questões dissertativas</h2><p class="small">Responda com suas palavras. Depois mostre para um adulto/professor ou compare com a explicação da matéria.</p>${d.open.map((x,i)=>`<div class="lesson"><b>${i+1}. ${x}</b><textarea class="textarea" placeholder="Escreva sua resposta aqui..."></textarea></div>`).join("")}</div>`;
+}
+function reviewErrors(){
+ if(!errors.length){alert("Ainda não há erros salvos para revisar.");return}
+ let take=errors.slice(-10); current=null; pool=take.map((e,i)=>({q:e.q,sub:e.sub,id:i}));qi=0;score=0;show("quiz");renderQ()
+}
+function startMixed(){
+ let all=[];Object.entries(DATA).forEach(([sub,d])=>d.qs.forEach(q=>all.push({q,sub})));all.sort(()=>Math.random()-.5);current=null;pool=all.slice(0,20).map((x,i)=>({...x,id:i}));qi=0;score=0;show("quiz");renderQ()
+}
+
+document.querySelectorAll(".staticBtn").forEach(b=>{
+  b.addEventListener("click",()=>openSubject(b.dataset.sub));
+});
+renderHome();
+</script>
+</body></html>
